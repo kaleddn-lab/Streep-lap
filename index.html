@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>STREETLAB | Streetwear</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#080808;
+    color:white;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(8,8,8,.95);
+    border-bottom:1px solid #222;
+    backdrop-filter:blur(15px);
+}
+
+.nav-container{
+    max-width:1250px;
+    margin:auto;
+    height:75px;
+    padding:0 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:#888;
+}
+
+.menu{
+    display:flex;
+    gap:30px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.menu a:hover{
+    color:#aaa;
+}
+
+.cart-button{
+    border:1px solid white;
+    background:white;
+    color:black;
+    padding:12px 18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:680px;
+
+    display:flex;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.2)
+    ),
+    url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:1250px;
+    width:100%;
+    margin:auto;
+    padding:40px 25px;
+}
+
+.small-title{
+    font-size:12px;
+    letter-spacing:5px;
+    color:#aaa;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(60px,10vw,120px);
+    line-height:.82;
+    letter-spacing:-6px;
+}
+
+.hero h1 span{
+    color:#888;
+}
+
+.hero p{
+    max-width:550px;
+    color:#ccc;
+    line-height:1.7;
+    margin:30px 0;
+}
+
+.button{
+    display:inline-block;
+    background:white;
+    color:black;
+    padding:16px 25px;
+    text-decoration:none;
+    font-weight:900;
+}
+
+/* SECTIONS */
+
+section{
+    max-width:1250px;
+    margin:auto;
+    padding:90px 25px;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:35px;
+}
+
+.section-header h2{
+    font-size:42px;
+}
+
+.section-header p{
+    color:#777;
+}
+
+/* FILTERS */
+
+.filters{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.filter{
+    background:#111;
+    color:#aaa;
+    border:1px solid #333;
+    padding:11px 17px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.filter:hover,
+.filter.active{
+    background:white;
+    color:black;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.product{
+    background:#111;
+    border:1px solid #202020;
+    overflow:hidden;
+}
+
+.product-image{
+    height:380px;
+    position:relative;
+    overflow:hidden;
+    background:#151515;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.product:hover img{
+    transform:scale(1.06);
+}
+
+.badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:white;
+    color:black;
+    padding:7px 10px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.product-info h3{
+    margin-bottom:10px;
+    font-size:16px;
+}
+
+.product-details{
+    display:flex;
+    justify-content:space-between;
+    color:#888;
+    font-size:13px;
+}
+
+.price{
+    color:white;
+    font-weight:bold;
+}
+
+.add-cart{
+    width:100%;
+    margin-top:15px;
+    padding:13px;
+    background:#1b1b1b;
+    color:white;
+    border:1px solid #444;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add-cart:hover{
+    background:white;
+    color:black;
+}
+
+/* DROP */
+
+.drop{
+    max-width:1250px;
+    min-height:450px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+
+    padding:50px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #000,
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.1)
+    ),
+    url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1800&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.drop h2{
+    font-size:65px;
+    line-height:.9;
+}
+
+.drop p{
+    color:#ccc;
+    max-width:500px;
+    margin:25px 0;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-image{
+    height:500px;
+
+    background:
+    url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1000&q=90")
+    center/cover;
+}
+
+.about-text h2{
+    font-size:55px;
+    line-height:.95;
+    margin-bottom:25px;
+}
+
+.about-text p{
+    color:#999;
+    line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #222;
+    padding:45px 25px;
+    color:#777;
+}
+
+.footer-container{
+    max-width:1250px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+}
+
+/* CART */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    z-index:2000;
+    display:none;
+}
+
+.overlay.active{
+    display:block;
+}
+
+.cart{
+    position:fixed;
+    right:-450px;
+    top:0;
+
+    width:430px;
+    max-width:100%;
+    height:100%;
+
+    background:#0d0d0d;
+    z-index:3000;
+
+    padding:25px;
+
+    display:flex;
+    flex-direction:column;
+
+    transition:.4s;
+}
+
+.cart.open{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding-bottom:20px;
+    border-bottom:1px solid #333;
+}
+
+.close{
+    border:0;
+    background:none;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.cart-items{
+    flex:1;
+    overflow:auto;
+    padding:20px 0;
+}
+
+.cart-item{
+    display:flex;
+    gap:15px;
+
+    padding:15px 0;
+    border-bottom:1px solid #222;
+}
+
+.cart-item img{
+    width:75px;
+    height:85px;
+    object-fit:cover;
+}
+
+.cart-item h4{
+    margin-bottom:8px;
+}
+
+.remove{
+    margin-top:8px;
+    background:none;
+    color:#888;
+    border:0;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.cart-total{
+    border-top:1px solid #333;
+    padding-top:20px;
+}
+
+.total-row{
+    display:flex;
+    justify-content:space-between;
+
+    font-size:21px;
+    font-weight:bold;
+
+    margin-bottom:18px;
+}
+
+.checkout{
+    width:100%;
+    padding:17px;
+
+    background:white;
+    color:black;
+
+    border:0;
+    cursor:pointer;
+
+    font-weight:900;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .product-image{
+        height:270px;
+    }
+
+    .hero{
+        min-height:600px;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .drop{
+        margin:10px;
+        padding:30px;
+    }
+
+    .drop h2{
+        font-size:45px;
+    }
+
+    .section-header h2{
+        font-size:30px;
+    }
+
+    .footer-container{
+        flex-direction:column;
+        gap:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="nav-container">
+
+<div class="logo">
+STREET<span>LAB</span>
+</div>
+
+<div class="menu">
+<a href="#inicio">Inicio</a>
+<a href="#shop">Shop</a>
+<a href="#drop">Drop</a>
+<a href="#nosotros">Nosotros</a>
+</div>
+
+<button class="cart-button" onclick="openCart()">
+🛒 CARRITO (<span id="cartCount">0</span>)
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero" id="inicio">
+
+<div class="hero-content">
+
+<div class="small-title">
+STREETWEAR / COSTA RICA
+</div>
+
+<h1>
+WEAR<br>
+<span>YOUR</span><br>
+STORY.
+</h1>
+
+<p>
+Ropa urbana para quienes no siguen tendencias.
+Diseñada para la calle, creada para destacar.
+</p>
+
+<a href="#shop" class="button">
+VER COLECCIÓN →
+</a>
+
+</div>
+
+</header>
+
+
+<!-- SHOP -->
+
+<section id="shop">
+
+<div class="section-header">
+
+<div>
+<div class="small-title">STREETLAB STORE</div>
+<h2>Últimos productos</h2>
+</div>
+
+<p>Limited Edition</p>
+
+</div>
+
+
+<div class="filters">
+
+<button class="filter active" onclick="filterProducts('Todos',this)">
+Todos
+</button>
+
+<button class="filter" onclick="filterProducts('Camisetas',this)">
+Camisetas
+</button>
+
+<button class="filter" onclick="filterProducts('Hoodies',this)">
+Hoodies
+</button>
+
+<button class="filter" onclick="filterProducts('Pantalones',this)">
+Pantalones
+</button>
+
+<button class="filter" onclick="filterProducts('Accesorios',this)">
+Accesorios
+</button>
+
+</div>
+
+
+<div class="products" id="products"></div>
+
+</section>
+
+
+<!-- DROP -->
+
+<div class="drop" id="drop">
+
+<div>
+
+<div class="small-title">
+DROP 01 / 2026
+</div>
+
+<h2>
+BUILT FOR<br>
+THE STREETS.
+</h2>
+
+<p>
+Una colección creada para combinar oversized fits,
+tonos limpios y actitud.
+</p>
+
+<a href="#shop" class="button">
+COMPRAR DROP
+</a>
+
+</div>
+
+</div>
+
+
+<!-- ABOUT -->
+
+<section id="nosotros">
+
+<div class="about">
+
+<div class="about-image"></div>
+
+<div class="about-text">
+
+<div class="small-title">
+SOBRE STREETLAB
+</div>
+
+<h2>
+NO SOMOS<br>
+SOLO ROPA.
+</h2>
+
+<p>
+STREETLAB nace de la cultura urbana y de la necesidad
+de vestir diferente.
+
+Cada pieza busca mezclar comodidad,
+diseño y personalidad.
+</p>
+
+<br>
+
+<p>
+<strong>LIMITED. LOCAL. ORIGINAL.</strong>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-container">
+
+<div class="logo">
+STREET<span>LAB</span>
+</div>
+
+<div>
+© 2026 STREETLAB
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- OVERLAY -->
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+
+<!-- CART -->
+
+<aside class="cart" id="cart">
+
+<div class="cart-header">
+
+<h2>Tu carrito</h2>
+
+<button class="close" onclick="closeCart()">
+×
+</button>
+
+</div>
+
+
+<div class="cart-items" id="cartItems"></div>
+
+
+<div class="cart-total">
+
+<div class="total-row">
+
+<span>Total</span>
+
+<span id="cartTotal">
+₡0
+</span>
+
+</div>
+
+<button class="checkout" onclick="checkout()">
+COMPRAR POR WHATSAPP
+</button>
+
+</div>
+
+</aside>
+
+
+<script>
+
+/* PRODUCTOS */
+
+const products = [
+
+{
+id:1,
+name:"LAB Oversized Tee",
+category:"Camisetas",
+price:15000,
+image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=90",
+badge:"NEW"
+},
+
+{
+id:2,
+name:"Shadow Boxy Tee",
+category:"Camisetas",
+price:17000,
+image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=800&q=90"
+},
+
+{
+id:3,
+name:"LAB Essential Hoodie",
+category:"Hoodies",
+price:28000,
+image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=90",
+badge:"DROP"
+},
+
+{
+id:4,
+name:"Blackout Hoodie",
+category:"Hoodies",
+price:30000,
+image:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=90"
+},
+
+{
+id:5,
+name:"Cargo Street Pant",
+category:"Pantalones",
+price:26000,
+image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=90"
+},
+
+{
+id:6,
+name:"Wide Leg Utility",
+category:"Pantalones",
+price:29000,
+image:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=90"
+},
+
+{
+id:7,
+name:"LAB Cap Black",
+category:"Accesorios",
+price:12000,
+image:"https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=800&q=90"
+},
+
+{
+id:8,
+name:"Street Crossbody",
+category:"Accesorios",
+price:14000,
+image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=90"
+}
+
+];
+
+
+/* CARRITO */
+
+let cart = JSON.parse(
+localStorage.getItem("streetlabCart") || "[]"
+);
+
+
+/* FORMATO DE PRECIO */
+
+function money(number){
+
+return "₡" + number.toLocaleString("es-CR");
+
+}
+
+
+/* MOSTRAR PRODUCTOS */
+
+function renderProducts(category="Todos"){
+
+const container =
+document.getElementById("products");
+
+const filtered =
+products.filter(product =>
+
+category === "Todos" ||
+product.category === category
+
+);
+
+
+container.innerHTML = filtered.map(product => `
+
+<article class="product">
+
+<div class="product-image">
+
+<img
+src="${product.image}"
+alt="${product.name}"
+>
+
+${product.badge ?
+`<span class="badge">${product.badge}</span>`
+:
+""}
+
+</div>
+
+<div class="product-info">
+
+<h3>
+${product.name}
+</h3>
+
+<div class="product-details">
+
+<span>
+${product.category}
+</span>
+
+<span class="price">
+${money(product.price)}
+</span>
+
+</div>
+
+<button
+class="add-cart"
+onclick="addToCart(${product.id})"
+>
+AGREGAR AL CARRITO
+</button>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+
+/* FILTROS */
+
+function filterProducts(category,button){
+
+document
+.querySelectorAll(".filter")
+.forEach(btn =>
+btn.classList.remove("active")
+);
+
+button.classList.add("active");
+
+renderProducts(category);
+
+}
+
+
+/* AGREGAR */
+
+function addToCart(id){
+
+const product =
+products.find(product => product.id === id);
+
+const existing =
+cart.find(item => item.id === id);
+
+
+if(existing){
+
+existing.quantity++;
+
+}else{
+
+cart.push({
+...product,
+quantity:1
+});
+
+}
+
+
+saveCart();
+
+openCart();
+
+}
+
+
+/* GUARDAR */
+
+function saveCart(){
+
+localStorage.setItem(
+"streetlabCart",
+JSON.stringify(cart)
+);
+
+renderCart();
+
+}
+
+
+/* MOSTRAR CARRITO */
+
+function renderCart(){
+
+const container =
+document.getElementById("cartItems");
+
+const count =
+cart.reduce(
+(total,item) =>
+total + item.quantity,
+0
+);
+
+
+document.getElementById("cartCount")
+.textContent = count;
+
+
+if(cart.length === 0){
+
+container.innerHTML = `
+<div style="
+text-align:center;
+color:#777;
+padding:60px 0;
+">
+Tu carrito está vacío.
+</div>
+`;
+
+document.getElementById("cartTotal")
+.textContent = "₡0";
+
+return;
+
+}
+
+
+container.innerHTML = cart.map(item => `
+
+<div class="cart-item">
+
+<img
+src="${item.image}"
+alt="${item.name}"
+>
+
+<div>
+
+<h4>
+${item.name}
+</h4>
+
+<div>
+${money(item.price)}
+× ${item.quantity}
+</div>
+
+<button
+class="remove"
+onclick="removeFromCart(${item.id})"
+>
+Eliminar
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+
+const total =
+cart.reduce(
+(sum,item) =>
+sum + item.price * item.quantity,
+0
+);
+
+
+document.getElementById("cartTotal")
+.textContent = money(total);
+
+}
+
+
+/* ELIMINAR */
+
+function removeFromCart(id){
+
+cart =
+cart.filter(item => item.id !== id);
+
+saveCart();
+
+}
+
+
+/* ABRIR */
+
+function openCart(){
+
+document
+.getElementById("cart")
+.classList.add("open");
+
+document
+.getElementById("overlay")
+.classList.add("active");
+
+renderCart();
+
+}
+
+
+/* CERRAR */
+
+function closeCart(){
+
+document
+.getElementById("cart")
+.classList.remove("open");
+
+document
+.getElementById("overlay")
+.classList.remove("active");
+
+}
+
+
+/* WHATSAPP */
+
+function checkout(){
+
+if(cart.length === 0){
+
+alert("Agrega productos al carrito primero.");
+
+return;
+
+}
+
+
+let message =
+"Hola STREETLAB 👋%0A%0A";
+
+message +=
+"Quiero realizar este pedido:%0A%0A";
+
+
+cart.forEach(item => {
+
+message +=
+"• " +
+item.name +
+" x" +
+item.quantity +
+" — " +
+money(item.price * item.quantity) +
+"%0A";
+
+});
+
+
+const total =
+cart.reduce(
+(sum,item) =>
+sum + item.price * item.quantity,
+0
+);
+
+
+message +=
+"%0A*TOTAL: " +
+money(total) +
+"*";
+
+
+/*
+CAMBIA ESTE NÚMERO POR
+EL WHATSAPP REAL DE STREETLAB.
+
+FORMATO:
+506 + número
+*/
+
+const phone =
+"50688888888";
+
+
+window.open(
+"https://wa.me/" +
+phone +
+"?text=" +
+message,
+"_blank"
+);
+
+}
+
+
+/* INICIAR */
+
+renderProducts();
+
+renderCart();
+
+</script>
+
+</body>
+</html>
+```
